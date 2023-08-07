@@ -1,21 +1,31 @@
 import sys, json
 
 def main():
-    print("Generator for Strings for The Plutonia Experiment")
+    print("Generator for Strings for Final Doom")
     print("Proceeding will overwrite any file named 'DEHACKED.txt' currently in this folder")
-    selection = input("Press anything but 'Q' to begin").upper()
+    
+    selection = input('''    
+    To edit a TNT file, press (T)
+    To edit a Plutonia file, press (P)
+    To exit the program, press (Q)
+    >''').upper()
 
+    
     if selection == "Q":
         sys.exit(0)
-    
+    elif selection == "P":
+        gen_final_doom('plstrings.json')
+    elif selection == "T":
+        gen_final_doom('tntstrings.json')
+    else:
+        print("Invalid Input")
 
-    gen_plutonia()
+
     sys.exit(0)
 
-
-def gen_plutonia():
+def gen_final_doom(wad_json):
     strings = {}
-    with open('plstrings.json', 'r', encoding='utf-8') as file_obj:
+    with open(wad_json, 'r', encoding='utf-8') as file_obj:
         strings = json.load(file_obj)
     
     inputStrs = {}
@@ -29,7 +39,7 @@ def gen_plutonia():
     for i in range(0, len(inputStrs)):
         newname = inputStrs[i]["data"]
         if (len(newname) > len(strings[i]["data"])):
-            print("String: '"+newname+"' is longer than replaced string, this may cause errors in vanilla.")
+            print(f"String: {newname} is longer than replaced string, this may cause errors in vanilla.")
         dehFile.write("Text "+str(len(strings[i]["data"]))+" "+str(len(newname))+"\n"+strings[i]["data"]+newname+"\n\n")
         
     print("DONE!")

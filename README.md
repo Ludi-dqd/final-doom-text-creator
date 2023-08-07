@@ -1,4 +1,4 @@
-# Plutonia Text Generator
+# Final Doom Text Generator
 A small script to generate vanilla DEHACKED files for text replacements for Final Doom: The Plutonia Experiment
 
 While stuff like this exists for DOOM2.wad, nothing does for PLUTONIA.wad, and counting string lengths manually is a pain so I made this script to do it for me :P
@@ -15,3 +15,6 @@ Note: This DOES NOT have support for editing states, sound effects or things. It
 3. Open a terminal window, and run the command `python pldeh.py`
 
 4. A DEHACKED.txt file will be generated which you can copy into your wad with any WAD editor, such as SLADE.
+
+### Credits
+@finnks13 for the original plutonia-text-creator
